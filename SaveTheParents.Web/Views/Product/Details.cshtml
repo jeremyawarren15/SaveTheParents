@@ -1,0 +1,93 @@
+﻿@using Microsoft.Ajax.Utilities
+@using Microsoft.AspNet.Identity
+@model SaveTheParents.Models.Product.ProductDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Product Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            UPC
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Upc)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Write a review", "Create", "Review", new { id=Model.ProductId}, null)
+</p>
+
+@if (Model.Reviews.Count != 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                Parent Rating
+            </th>
+            <th>
+                ChildRating
+            </th>
+            <th>
+                Description
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Reviews)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChildRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParentRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReviewText)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Review", new {id = item.ReviewId}, null)
+
+                    @if (User.Identity.IsAuthenticated && Guid.Parse(User.Identity.GetUserId()) == item.UserId)
+                    {
+                        <text> | </text>
+                        @Html.ActionLink("Edit", "Edit", "Review", new {id = item.ReviewId}, null)
+                        <text> | </text>
+                        @Html.ActionLink("Delete", "Delete", "Review", new {id = item.ReviewId}, null)
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h1>No comments to display.</h1>
+}
