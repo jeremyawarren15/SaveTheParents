@@ -45,7 +45,6 @@ namespace SaveTheParents.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var reviewService = new ReviewService();
                 var products =
                     ctx
                         .Products
@@ -57,7 +56,16 @@ namespace SaveTheParents.Services
                                 Upc = e.Upc
                             });
 
-                return products.ToList();
+                var final = products.ToList();
+
+                var reviewService = new ReviewService();
+
+                foreach (var item in final)
+                {
+                    item.ReviewCount = reviewService.GetReviewCountByProductId(item.ProductId);
+                }
+
+                return final;
             }
         }
 

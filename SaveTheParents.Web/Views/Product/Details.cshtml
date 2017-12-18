@@ -6,19 +6,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>ProductDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Product Name
-        </dt>
+    <br/>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+    <h2>@Html.DisplayFor(model => model.ProductName)</h2>
+    <hr/>
+    <dl class="dl-horizontal">
 
         <dt>
             UPC
@@ -43,51 +36,33 @@
     @Html.ActionLink("Write a review", "Create", "Review", new { id=Model.ProductId}, null)
 </p>
 
-@if (Model.Reviews.Count != 0)
+@foreach (var item in Model.Reviews)
 {
-    <table class="table">
-        <tr>
-            <th>
-                Parent Rating
-            </th>
-            <th>
-                ChildRating
-            </th>
-            <th>
-                Description
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.Reviews)
+    <div class="card text-white bg-primary mb-3 container">
+        <div class="card-header row">
+            <div class="col-md-12">
+                @Html.DisplayFor(modelItem => item.UserName) |
+                @Html.DisplayFor(modelItem => item.ReviewTitle)    
+            </div>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-8">
+                <p class="card-text">@Html.DisplayFor(modelItem => item.ReviewText)</p>
+            </div>
+            <div class="col-md-4">
+                <p class="card-text">Child Rating: @Html.DisplayFor(modelItem => item.ChildRating)</p>
+                <p class="card-text">Parent Rating: @Html.DisplayFor(modelItem => item.ParentRating)</p>
+            </div>
+        </div>
+        @if (User.Identity.GetUserId() == item.UserId.ToString())
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ChildRating)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParentRating)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReviewText)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", "Review", new {id = item.ReviewId}, null)
-
-                    @if (User.Identity.IsAuthenticated && Guid.Parse(User.Identity.GetUserId()) == item.UserId)
-                    {
-                        <text> | </text>
-                        @Html.ActionLink("Edit", "Edit", "Review", new {id = item.ReviewId}, null)
-                        <text> | </text>
-                        @Html.ActionLink("Delete", "Delete", "Review", new {id = item.ReviewId}, null)
-                    }
-                </td>
-            </tr>
+            <div class="card-footer bg-secondary text-muted row">
+                <div class="col-md-12">
+                    @Html.ActionLink("Edit", "Edit", "Review", new {id = item.ReviewId}, null) |
+                    @Html.ActionLink("Delete", "Delete", "Review", new {id = item.ReviewId}, null)
+                </div>
+            </div>
         }
-
-    </table>
-}
-else
-{
-    <h1>No comments to display.</h1>
+        
+    </div>
 }

@@ -10,8 +10,8 @@ namespace SaveTheParents.Models.Review
     {
         public Guid UserId { get; set; }
         public int ProductId { get; set; }
-        public float ParentRating { get; set; }
-        public float ChildRating { get; set; }
+        public int ParentRating { get; set; }
+        public int ChildRating { get; set; }
         public string ReviewText { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset? ModifiedDate { get; set; }

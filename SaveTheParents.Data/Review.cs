@@ -22,10 +22,14 @@ namespace SaveTheParents.Data
         public int ProductId { get; set; }
 
         [Required]
-        public float ParentRating { get; set; }
+        [Range(0,10)]
+        public int ParentRating { get; set; }
 
+        [Range(0,10)]
+        public int ChildRating { get; set; }
 
-        public float ChildRating { get; set; }
+        [Required]
+        public string ReviewTitle { get; set; }
 
         public string ReviewText { get; set; }
 

@@ -36,6 +36,7 @@ namespace SaveTheParents.Services
                     ParentRating = model.ParentRating,
                     ChildRating = model.ChildRating,
                     ReviewText = model.ReviewText,
+                    ReviewTitle = model.ReviewTitle,
                     CreatedDate = DateTimeOffset.UtcNow,
                 };
 
@@ -86,12 +87,20 @@ namespace SaveTheParents.Services
                                 UserId = e.UserId,
                                 ParentRating = e.ParentRating,
                                 ChildRating = e.ChildRating,
+                                ReviewTitle = e.ReviewTitle,
                                 ReviewText = e.ReviewText,
                                 CreatedDate = e.CreatedDate,
                                 ModifiedDate = e.ModifiedDate
                             });
 
-                return reviews.ToList();
+                var final = reviews.ToList();
+
+                foreach (var item in final)
+                {
+                    item.UserName = GetNameFromUserId(item.UserId);
+                }
+
+                return final;
             }
         }
 
@@ -171,6 +180,20 @@ namespace SaveTheParents.Services
                         .SingleOrDefault(u => u.Id == userId.ToString());
 
                 return user.UserName;
+            }
+        }
+
+        public int GetReviewCountByProductId(int productId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var count =
+                    ctx
+                        .Reviews
+                        .Where(r => r.ProductId == productId)
+                        .Select(e => e);
+
+                return count.ToList().Count();
             }
         }
     }
