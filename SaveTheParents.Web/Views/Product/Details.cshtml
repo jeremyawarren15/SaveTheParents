@@ -6,19 +6,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>ProductDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Product Name
-        </dt>
+    <br/>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+    <h2>@Html.DisplayFor(model => model.ProductName)</h2>
+    <hr/>
+    <dl class="dl-horizontal">
 
         <dt>
             UPC
@@ -43,15 +36,33 @@
     @Html.ActionLink("Write a review", "Create", "Review", new { id=Model.ProductId}, null)
 </p>
 
-<div class="container">
-    @foreach (var item in Model.Reviews)
-    {
-        <div class="card text-white bg-primary mb-3 row">
-            <div class="card-header">Review</div>
-            <div class="card-body">
-                <h4 class="card-title">@Html.DisplayFor(modelItem => item.ReviewTitle)</h4>
-                <p class="card-text">@Html.DisplayFor(modelItem => item.ReviewText)</p>
+@foreach (var item in Model.Reviews)
+{
+    <div class="card text-white bg-primary mb-3 container">
+        <div class="card-header row">
+            <div class="col-md-12">
+                @Html.DisplayFor(modelItem => item.UserName) |
+                @Html.DisplayFor(modelItem => item.ReviewTitle)    
             </div>
         </div>
-    }
-</div>
+        <div class="card-body row">
+            <div class="col-md-8">
+                <p class="card-text">@Html.DisplayFor(modelItem => item.ReviewText)</p>
+            </div>
+            <div class="col-md-4">
+                <p class="card-text">Child Rating: @Html.DisplayFor(modelItem => item.ChildRating)</p>
+                <p class="card-text">Parent Rating: @Html.DisplayFor(modelItem => item.ParentRating)</p>
+            </div>
+        </div>
+        @if (User.Identity.GetUserId() == item.UserId.ToString())
+        {
+            <div class="card-footer bg-secondary text-muted row">
+                <div class="col-md-12">
+                    @Html.ActionLink("Edit", "Edit", "Review", new {id = item.ReviewId}, null) |
+                    @Html.ActionLink("Delete", "Delete", "Review", new {id = item.ReviewId}, null)
+                </div>
+            </div>
+        }
+        
+    </div>
+}

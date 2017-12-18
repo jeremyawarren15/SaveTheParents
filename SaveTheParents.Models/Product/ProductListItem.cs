@@ -11,5 +11,6 @@ namespace SaveTheParents.Models.Product
         public int ProductId { get; set; }
         public string Upc { get; set; }
         public string ProductName { get; set; }
+        public int ReviewCount { get; set; }
     }
 }

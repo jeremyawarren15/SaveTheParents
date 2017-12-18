@@ -93,7 +93,14 @@ namespace SaveTheParents.Services
                                 ModifiedDate = e.ModifiedDate
                             });
 
-                return reviews.ToList();
+                var final = reviews.ToList();
+
+                foreach (var item in final)
+                {
+                    item.UserName = GetNameFromUserId(item.UserId);
+                }
+
+                return final;
             }
         }
 
@@ -173,6 +180,20 @@ namespace SaveTheParents.Services
                         .SingleOrDefault(u => u.Id == userId.ToString());
 
                 return user.UserName;
+            }
+        }
+
+        public int GetReviewCountByProductId(int productId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var count =
+                    ctx
+                        .Reviews
+                        .Where(r => r.ProductId == productId)
+                        .Select(e => e);
+
+                return count.ToList().Count();
             }
         }
     }

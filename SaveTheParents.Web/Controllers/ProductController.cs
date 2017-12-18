@@ -25,7 +25,7 @@ namespace SaveTheParents.Web.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var service = new ProductService();           
+            var service = new ProductService();
             return View(service.GetProducts());
         }
 

@@ -65,6 +65,10 @@
     <Compile Include="Migrations\201712152103207_initial.Designer.cs">
       <DependentUpon>201712152103207_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712182007340_ChangedFloatToInt.cs" />
+    <Compile Include="Migrations\201712182007340_ChangedFloatToInt.Designer.cs">
+      <DependentUpon>201712182007340_ChangedFloatToInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712152103207_initial.resx">
       <DependentUpon>201712152103207_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712182007340_ChangedFloatToInt.resx">
+      <DependentUpon>201712182007340_ChangedFloatToInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
