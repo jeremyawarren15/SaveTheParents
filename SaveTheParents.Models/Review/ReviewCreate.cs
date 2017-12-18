@@ -12,6 +12,7 @@ namespace SaveTheParents.Models.Review
         public int ProductId { get; set; }
         public float ParentRating { get; set; }
         public float ChildRating { get; set; }
+        public string ReviewTitle { get; set; }
         public string ReviewText { get; set; }
     }
 }

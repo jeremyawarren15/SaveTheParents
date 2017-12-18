@@ -27,6 +27,9 @@ namespace SaveTheParents.Data
 
         public float ChildRating { get; set; }
 
+        [Required]
+        public string ReviewTitle { get; set; }
+
         public string ReviewText { get; set; }
 
         [Required]
