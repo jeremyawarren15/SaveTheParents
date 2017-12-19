@@ -26,6 +26,11 @@ namespace SaveTheParents.Services
             // Only for getting reviews
         }
 
+        public ReviewService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         public bool Create(ReviewCreate model)
         {
             var review =

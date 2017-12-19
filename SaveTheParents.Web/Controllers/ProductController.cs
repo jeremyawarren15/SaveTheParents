@@ -108,7 +108,5 @@ namespace SaveTheParents.Web.Controllers
             ModelState.AddModelError("", "Your product could not be updated.");
             return View(model);
         }
-
-        
     }
 }
