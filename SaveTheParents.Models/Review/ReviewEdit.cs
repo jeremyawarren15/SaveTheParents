@@ -32,7 +32,5 @@ namespace SaveTheParents.Models.Review
         [Required]
         public string ReviewText { get; set; }
 
-        [Required]
-        public DateTimeOffset? ModifiedDate { get; set; }
     }
 }

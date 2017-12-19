@@ -57,7 +57,7 @@ namespace SaveTheParents.Web.Controllers
                     ChildRating = detail.ChildRating,
                     ParentRating = detail.ParentRating,
                     ReviewText = detail.ReviewText,
-                    ReviewId = detail.ReviewId,
+                    ReviewId = id,
                     UserId = userId,
                     ReviewTitle = detail.ReviewTitle
                 };

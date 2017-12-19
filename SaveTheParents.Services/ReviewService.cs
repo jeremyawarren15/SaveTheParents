@@ -125,6 +125,7 @@ namespace SaveTheParents.Services
                         ProductId = review.ProductId,
                         ParentRating = review.ParentRating,
                         ChildRating = review.ChildRating,
+                        ReviewTitle = review.ReviewTitle,
                         ReviewText = review.ReviewText,
                         CreatedDate = review.CreatedDate,
                         ModifiedDate = review.ModifiedDate
