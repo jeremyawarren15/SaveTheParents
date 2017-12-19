@@ -46,6 +46,50 @@ namespace SaveTheParents.Web.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var reviewService = new ReviewService(userId);
+            var detail = reviewService.GetReviewById(id);
+            var model =
+                new ReviewEdit()
+                {
+                    ChildRating = detail.ChildRating,
+                    ParentRating = detail.ParentRating,
+                    ReviewText = detail.ReviewText,
+                    ReviewId = detail.ReviewId,
+                    UserId = userId,
+                    ReviewTitle = detail.ReviewTitle
+                };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ReviewEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.ReviewId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var reviewService = new ReviewService(userId);
+
+            if (reviewService.Update(model))
+            {
+                TempData["SaveResult"] = "Your note was updated";
+                return RedirectToAction("Index", "Product");
+            }
+
+            ModelState.AddModelError("", "Your note could not be updated.");
+            return View(model);
+        }
+
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {

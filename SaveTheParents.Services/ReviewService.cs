@@ -150,6 +150,7 @@ namespace SaveTheParents.Services
                 review.ChildRating = model.ChildRating;
                 review.ReviewText = model.ReviewText;
                 review.ModifiedDate = DateTimeOffset.UtcNow;
+                review.ReviewTitle = model.ReviewTitle;
 
                 return ctx.SaveChanges() == 1;
             }
