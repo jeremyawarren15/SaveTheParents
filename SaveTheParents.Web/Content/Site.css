@@ -1,6 +1,24 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@import url('https://fonts.googleapis.com/css?family=Nunito|Raleway:400,700');
+
+body {
+    padding-top: 98px;
+    background-color: #37392E;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+
+h2 {
+    color: #19647E;
+    font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+    color: #F4FFFD;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +39,65 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.navbar {
+    padding: 30px;
+    background-color: #F4FFFD;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.navbar-light .navbar-brand {
+    color: #37392E;
+}
+
+p {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+}
+
+.landing-image {
+    background: linear-gradient(rgba(25,100,126,0.3),rgba(25,100,126,0.3)),url(../toys.jpeg);
+    -ms-background-size: cover;
+    background-size: cover;
+    height: 500px;
+}
+
+.main-heading-text {
+    color: #F5F9E9;
+}
+
+.main-subheading-text {
+    font-family: 'Nunito', sans-serif;
+    color: #F5F9E9;
+}
+
+.about {
+    background-color: #19647E;
+    color: #F5F9E9;
+}
+
+.landing-image .container .row {
+    padding: 170px 0;
+}
+
+.container .row {
+    padding: 30px 0;
+}
+
+.something {
+    background-color: #F5F9E9;
+}
+
+footer {
+    color: #F4FFFD;
+    margin: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+.container .row {
+    padding: 60px 0;
 }

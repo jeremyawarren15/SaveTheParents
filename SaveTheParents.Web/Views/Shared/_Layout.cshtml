@@ -10,14 +10,14 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">Save The Parents</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
+            <div class="collapse navbar-collapse" id="navbarColor01 ">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         @Html.ActionLink(
@@ -38,11 +38,17 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Save The Parents</p>
+
+        <footer class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>&copy; @DateTime.Now.Year - Save The Parents</p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
