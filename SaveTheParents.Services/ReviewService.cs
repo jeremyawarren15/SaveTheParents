@@ -128,7 +128,9 @@ namespace SaveTheParents.Services
                         ReviewTitle = review.ReviewTitle,
                         ReviewText = review.ReviewText,
                         CreatedDate = review.CreatedDate,
-                        ModifiedDate = review.ModifiedDate
+                        ModifiedDate = review.ModifiedDate,
+                        ReviewId = review.ReviewId,
+                        UserName = review.UserName
                     };
             }
         }

@@ -55,6 +55,7 @@ namespace SaveTheParents.Api.Controllers
             return Ok(review);
         }
 
+        [Authorize]
         public IHttpActionResult Post(ReviewCreate model)
         {
             if (!ModelState.IsValid)
