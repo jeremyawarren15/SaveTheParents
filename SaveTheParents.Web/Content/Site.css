@@ -2,8 +2,8 @@
 
 body {
     padding-top: 98px;
-    background-color: #37392E;
     font-family: 'Raleway', sans-serif;
+    background-color: #F5F9E9;
 }
 
 h1 {
@@ -57,7 +57,7 @@ p {
 }
 
 .landing-image {
-    background: linear-gradient(rgba(25,100,126,0.3),rgba(25,100,126,0.3)),url(../toys.jpeg);
+    background: linear-gradient(rgba(89,104,105,0.6),rgba(84,104,105,0.6)),url(../toys.jpeg);
     -ms-background-size: cover;
     background-size: cover;
     height: 500px;
@@ -83,14 +83,26 @@ p {
 
 .container .row {
     padding: 30px 0;
+    padding: 60px 0;
+
 }
 
 .something {
     background-color: #F5F9E9;
 }
 
+li h2 {
+    float: left;
+}
+
+li p {
+    float: left;
+    margin: 10px;
+}
+
 footer {
     color: #F4FFFD;
+    background-color: #37392E;
     margin: 0;
 }
 
@@ -98,6 +110,20 @@ footer p {
     margin: 0;
 }
 
-.container .row {
-    padding: 60px 0;
+ul {
+    list-style-type: none;
+    margin-bottom: 60px;
+}
+
+.display-section {
+    display: inline;
+}
+
+.row.review {
+    margin: 30px 0;
+    padding: 0;
+}
+
+.row.review * {
+    float: none;
 }

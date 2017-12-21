@@ -4,44 +4,58 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Delete Your Review</h2>
+            <h3>Are you sure you want to delete this?</h3>
+            <div>
+                <h4>ReviewDetail</h4>
+                <hr/>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ReviewTitle)
+                    </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ReviewDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ParentRating)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ReviewTitle)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ParentRating)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ReviewText)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ChildRating)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ReviewText)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ChildRating)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ParentRating)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ReviewText)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.ParentRating)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReviewText)
-        </dd>
-    </dl>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ChildRating)
+                    </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                    <dd>
+                        @Html.DisplayFor(model => model.ChildRating)
+                    </dd>
+                </dl>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Details", "Product", new {id = Model.ProductId}, null)
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default"/> |
+                        @Html.ActionLink("Back to List", "Details", "Product", new {id = Model.ProductId}, null)
+                    </div>
+                }
+            </div>
         </div>
-    }
+    </div>
 </div>
