@@ -23,3 +23,8 @@ To test out my project you will have to have Visual Studio installed. If you run
 ### Design
 - [Color Scheme](https://coolors.co/37392e-19647e-f4fffd-596869-f5f9e9)
 - [Google Fonts](https://fonts.google.com/selection?selection.family=Nunito|Raleway:400,700)
+
+### Contact The Developer
+If you want to contact me you can do so at jeremyawarren15@gmail.com
+
+Thank you for taking a look at my project!
