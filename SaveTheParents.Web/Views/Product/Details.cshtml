@@ -6,63 +6,58 @@
     ViewBag.Title = "Details";
 }
 
-<div>
-    <br/>
-
-    <h2>@Html.DisplayFor(model => model.ProductName)</h2>
-    <hr/>
-    <dl class="dl-horizontal">
-
-        <dt>
-            UPC
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Upc)
-        </dd>
-
-        <dt>
-            Description
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("Write a review", "Create", "Review", new { id=Model.ProductId}, null)
-</p>
-
-@foreach (var item in Model.Reviews)
-{
-    <div class="card text-white bg-primary mb-3 container">
-        <div class="card-header row">
+<div class="row">
+    <div class="container">
+        <div class="row display-section">
             <div class="col-md-12">
-                @Html.DisplayFor(modelItem => item.UserName) |
-                @Html.DisplayFor(modelItem => item.ReviewTitle)    
+                <h1>@Html.DisplayFor(model => model.ProductName)</h1>
+
+                <br/>
+
+                <h2>UPC:</h2>
+                <p>@Html.DisplayFor(model => model.Upc)</p>
+
+                <h2>Description:</h2>
+                <p>@Html.DisplayFor(model => model.ProductDescription)</p>
+                
+                <br />
+                <p>
+                    @Html.ActionLink("Back to List", "Index") |
+                    @Html.ActionLink("Write a review", "Create", "Review", new { id=Model.ProductId}, null)
+                </p>
             </div>
         </div>
-        <div class="card-body row">
-            <div class="col-md-8">
-                <p class="card-text">@Html.DisplayFor(modelItem => item.ReviewText)</p>
-            </div>
-            <div class="col-md-4">
-                <p class="card-text">Child Rating: @Html.DisplayFor(modelItem => item.ChildRating)</p>
-                <p class="card-text">Parent Rating: @Html.DisplayFor(modelItem => item.ParentRating)</p>
-            </div>
-        </div>
-        @if (User.Identity.GetUserId() == item.UserId.ToString())
-        {
-            <div class="card-footer bg-secondary text-muted row">
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="container">
+        @foreach (var item in Model.Reviews) {
+            <div class="row review">
                 <div class="col-md-12">
-                    @Html.ActionLink("Edit", "Edit", "Review", new {id = item.ReviewId}, null) |
-                    @Html.ActionLink("Delete", "Delete", "Review", new {id = item.ReviewId}, null)
+                    <h2>
+                        @Html.DisplayFor(modelItem => item.UserName) |
+                        @Html.DisplayFor(modelItem => item.ReviewTitle)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.ReviewText)
+                    </p>
+                    <p>
+                        Child Rading: @Html.DisplayFor(modelItem => item.ChildRating)
+                    </p>
+                    <p>
+                        Parent Rating: @Html.DisplayFor(modelItem => item.ParentRating)
+                    </p>
+
+                    @if (User.Identity.GetUserId() == item.UserId.ToString())
+                    {
+                        @Html.ActionLink("Edit", "Edit", "Review", new {id = item.ReviewId}, null)
+                        @Html.ActionLink("Delete", "Delete", "Review", new {id = item.ReviewId}, null)
+                    }
                 </div>
             </div>
         }
-        
     </div>
-}
+</div>
