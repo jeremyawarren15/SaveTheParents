@@ -1,6 +1,7 @@
 ﻿using SaveTheParents.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using SaveTheParents.Data;
 using SaveTheParents.Data.IdentityModels;
@@ -69,10 +70,7 @@ namespace SaveTheParents.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var product =
-                    ctx
-                        .Products
-                        .SingleOrDefault(e => e.ProductId == productId);
+                var product = GetProduct(ctx, productId);
 
                 var rService = new ReviewService(_userId, productId);
 
@@ -92,10 +90,7 @@ namespace SaveTheParents.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var product =
-                    ctx
-                        .Products
-                        .SingleOrDefault(e => e.ProductId == model.ProductId);
+                var product = GetProduct(ctx, model.ProductId);
 
                 product.ProductName = model.ProductName;
                 product.ProductDescription = model.ProductDescription;
@@ -109,14 +104,22 @@ namespace SaveTheParents.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var product =
-                    ctx
-                        .Products
-                        .SingleOrDefault(e => e.ProductId == productId);
+                var product = GetProduct(ctx, productId);
 
                 ctx.Products.Remove(product);
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        private Product GetProduct(ApplicationDbContext context, int productId)
+        {
+            using (context)
+            {
+                return
+                    context
+                        .Products
+                        .SingleOrDefault(e => e.ProductId == productId);
             }
         }
     }

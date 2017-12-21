@@ -139,13 +139,11 @@ namespace SaveTheParents.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var review =
-                    ctx
-                        .Reviews
-                        .SingleOrDefault(
-                            r =>
-                                r.ReviewId == model.ReviewId &&
-                                model.UserId == _userId);
+                var review = 
+                    GetReview(
+                        model.ReviewId, 
+                        model.UserId, 
+                        ctx);
 
                 if (review == null) return false;
 
@@ -159,17 +157,21 @@ namespace SaveTheParents.Services
             }
         }
 
+        private Review GetReview(int reviewId, Guid userId, ApplicationDbContext context)
+        {
+            return context
+                    .Reviews
+                    .SingleOrDefault(
+                        r =>
+                            r.ReviewId == reviewId &&
+                            userId == _userId);
+        }
+
         public bool Delete(int reviewId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var review =
-                    ctx
-                        .Reviews
-                        .SingleOrDefault(
-                            r =>
-                                r.ReviewId == reviewId &&
-                                r.UserId == _userId);
+                var review = GetReview(reviewId, _userId, ctx);
 
                 if (review == null) return false;
 
@@ -179,7 +181,7 @@ namespace SaveTheParents.Services
             }
         }
 
-        public static string GetNameFromUserId(Guid userId)
+        private static string GetNameFromUserId(Guid userId)
         {
             using (var ctx = new ApplicationDbContext())
             {
