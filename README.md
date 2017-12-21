@@ -16,6 +16,8 @@ The goal was to design a website so that parents could go and rate children's pr
 ### Future Plans
 - Sort products by ratings
 - Add an admin portal to moderate reviews and products
+- Search functionality
+- Filtering by category or product type
 
 ### How to get it running
 To test out my project you will have to have Visual Studio installed. If you run the application from visual studio it should create an empty database for you to play around with locally.
