@@ -22,6 +22,9 @@ The goal was to design a website so that parents could go and rate children's pr
 ### How to get it running
 To test out my project you will have to have Visual Studio installed. If you run the application from visual studio it should create an empty database for you to play around with locally.
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=N5dREewlB0k" target="_blank"><img src="http://img.youtube.com/vi/N5dREewlB0k/0.jpg" 
+alt="YouTube Demo of Save The Parents" width="240" height="180" border="10" /></a>
+
 ### Design
 - [Color Scheme](https://coolors.co/37392e-19647e-f4fffd-596869-f5f9e9)
 - [Google Fonts](https://fonts.google.com/selection?selection.family=Nunito|Raleway:400,700)
