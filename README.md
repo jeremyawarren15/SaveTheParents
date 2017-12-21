@@ -30,10 +30,15 @@ alt="YouTube Demo of Save The Parents" width="240" height="180" border="10" /></
 - [Google Fonts](https://fonts.google.com/selection?selection.family=Nunito|Raleway:400,700)
 
 ### API Test Screenshots
-![Getting All Products](/repoimages/token.PNG)
+The following are some images that display that I have a working API for my project.
+#### Get a Token
+![Getting a token](/repoimages/token.PNG)
+#### Get All Products
 ![Getting All Products](/repoimages/allproducts.PNG)
-![Getting All Products](/repoimages/singleproduct.PNG)
-![Getting All Products](/repoimages/singlereview.PNG)
+#### Get a Product and it's Reviews
+![Getting A Single Product](/repoimages/singleproduct.PNG)
+#### Get a Review
+![Getting A Single Review](/repoimages/singlereview.PNG)
 
 ### Contact The Developer
 If you want to contact me you can do so at jeremyawarren15@gmail.com
